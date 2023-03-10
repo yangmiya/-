@@ -57,3 +57,23 @@ def backup(path, info):
     # 备份文件
     os.rename(path, backup_path)
     logger.info('备份文件成功，备份文件路径为：{}'.format(backup_path), extra={'info': info})
+
+
+def store_df(df, info):
+    """
+    将DataFrame存储为csv文件
+    :param df: DataFrame
+    :type df: pandas.DataFrame
+    :param info: 备份信息
+    :type info: str
+    :return: None
+    """
+    # 生成文件路径
+    path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'backup', 'backup {}.csv'.format(info))
+    # 如果文件存在
+    if os.path.exists(path):
+        # 删除文件
+        os.remove(path)
+    # 将DataFrame存储为csv文件
+    df.to_csv(path, index=False)
+    logger.info('存储文件成功，文件路径为：{}'.format(path), extra={'info': info})

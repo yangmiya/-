@@ -14,7 +14,7 @@ import pandas as pd
 import numpy as np
 import logging
 from utils.Exceptions import *
-from utils.backup import backup
+from utils.backup import backup, store_df
 
 logging.basicConfig(level=logging.INFO, filename='pre-handle.log', filemode='w', format='%(asctime)s - %(name)s - %('
                                                                                         'levelname)s - %(message)s')
@@ -26,6 +26,7 @@ class HandleData(object):
     处理数据中的空值 异常值 以及重复值
     :param object: pandas.DataFrame
     """
+
     def __init__(self, dataframe):
         self.dataframe = dataframe
 
@@ -36,7 +37,7 @@ class HandleData(object):
         """
         if self.dataframe.isnull().values.any():
             logger.warning('数据存在空值')
-            backup1 = backup(self.dataframe)
+            store_df(self.dataframe, '替换空值前备份')
             # 空值用0填充
             self.dataframe = self.dataframe.fillna(0)
             logger.info('已用0填充空值')
@@ -51,6 +52,7 @@ class HandleData(object):
         :return: pandas.DataFrame
         """
         if self.dataframe.duplicated().any():
+            store_df(self.dataframe, '删除重复值前备份')
             logger.warning('第{}行数据存在重复值'.format(self.dataframe.duplicated().any()))
             # 删除重复的行
             self.dataframe = self.dataframe.drop_duplicates()
@@ -65,8 +67,13 @@ class HandleData(object):
         处理数据中的格式异常
         :return: pandas.DataFrame
         """
-        backup.
-        # 将数据中的异常值替换为NaN
+        store_df(self.dataframe, '格式化异常前备份')
+        # 除['姓名', '性别']外的列应为int类型，查询格式异常的数据，使用0替换
+        for col in self.dataframe.columns:
+            if col not in ['姓名', '性别']:
+                self.dataframe[col] = self.dataframe[col].apply(lambda x: 0 if type(x) != int else x)
+        logger.info('已将格式异常的数据替换为0')
+        return self.dataframe
 
     def handle_all(self):
         """
@@ -75,5 +82,5 @@ class HandleData(object):
         """
         self.dataframe = self.handle_null()
         self.dataframe = self.handle_duplicate()
-        self.dataframe = self.handle_outlier()
+        self.dataframe = self.handle_format()
         return self.dataframe

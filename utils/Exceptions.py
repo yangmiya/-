@@ -117,3 +117,19 @@ class DataDuplicateError(DataError):
     def __str__(self):
         logging.error(self.message + '重复数据: ' + '\n' + str(self.error_data))
         return self.message + '重复数据: ' + '\n' + str(self.error_data)
+
+
+class DataNullError(DataError):
+    """
+    数据空值异常
+    """
+
+    def __init__(self, message, error_data=None):
+        super().__init__(message)
+        self.message = message
+        self.error = '数据中存在空值'
+        self.error_data = error_data
+
+    def __str__(self):
+        logging.error(self.message + '空值数据: ' + '\n' + str(self.error_data))
+        return self.message + '空值数据: ' + '\n' + str(self.error_data)
