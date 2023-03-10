@@ -9,53 +9,32 @@
  @IDE     : PyCharm
  @Contact : hhh_htz@outlook.com
  """
-from utils.handler import HandleData
+from utils.handler import DataHandler
 from utils.backup import store_df
-from utils.check import CheckData
 from utils.read_data import read_data
-from utils.Exceptions import *
 from tkinter import filedialog
 import tkinter as tk
-import pandas as pd
+from conf.config import *
 
-root = tk.Tk()
-root.withdraw()
-
-# 获取文件路径
-file_path = filedialog.askopenfilename()
+# root = tk.Tk()
+# root.withdraw()
+#
+# # 获取文件路径
+# file_path = filedialog.askopenfilename()
+# 文件是本目录下的stu_score.csv
+file_path = 'stu_score.xlsx'
 
 # 读取数据
 dataframe = read_data(file_path)
-print(dataframe)
 
-# 检查+处理数据
-if not CheckData.check_null(dataframe):
-    """
-    如果数据存在空值
-    """
-    dataframe = HandleData.handle_null(dataframe)
-if not CheckData.check_duplicate(dataframe):
-    """
-    如果数据存在重复值
-    """
-    dataframe = HandleData.handle_duplicate(dataframe)
-if CheckData.check_data_type(dataframe):
-    """
-    如果数据类型错误
-    """
-    raise DataError('数据类型错误')
-if not CheckData.check_int(dataframe):
-    """
-    如果数据存在非整数
-    """
-    dataframe = HandleData.handle_int(dataframe)
-
-# 保存数据
-with pd.ExcelWriter(file_path) as writer:
-    dataframe.to_excel(writer, index=False)
+# 处理数据
+data_handler = DataHandler(dataframe, ScoreCol, StrCol)
+dataframe2 = data_handler.clean_data()
+print(dataframe2)
 
 # 备份数据
-store_df(dataframe, '处理后备份')
+store_df(dataframe2, '处理后备份')
 
-
-
+# 保存数据
+dataframe.to_excel(SaveName, index=False)
+print('保存成功！')

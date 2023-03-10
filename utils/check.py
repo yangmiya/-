@@ -9,7 +9,7 @@
  @IDE     : PyCharm
  @Contact : hhh_htz@outlook.com
  """
-import pandas as pd
+from conf.config import *
 from utils.Exceptions import *
 
 logging.basicConfig(level=logging.INFO, filename='pre-handle.log', filemode='w', format='%(asctime)s - %(name)s - %('
@@ -69,21 +69,21 @@ class CheckData(object):
         检查数据类型
         :return: bool
         """
-        # 检查姓名和性别列是否为字符串类型
-        if isinstance(self['姓名'].dtype, object) and isinstance(self['性别'].dtype, object):
-            logger.info('姓名和性别列为字符串类型')
+        # 从StrCol中获取应为字符串类型的列
+        str_col = StrCol
+        if self[str_col].applymap(lambda x: isinstance(x, str)).all().all():
+            logger.info('应为字符串的列校验通过')
         else:
-            logger.error('姓名或性别列不是字符串类型', exc_info=True)
-            raise DataError('姓名或性别列不是字符串类型')
-
-        # 检查其他列是否为整数类型
-        for col in self.columns:
-            if col not in ['姓名', '性别']:
-                if isinstance(self[col].dtype, int):
-                    logger.info(f'{col}列为整数类型')
-            else:
-                logger.error(f'{col}列不是整数类型', exc_info=True)
-                return False
+            # 报错精确到哪一列第几行
+            logger.error('应为字符串的列校验未通过', exc_info=True)
+        # 检查ScoreCol中的列是否为整数类型
+        score_col = ScoreCol
+        if self[score_col].applymap(lambda x: isinstance(x, int)).all().all():
+            logger.info('应为整数的列校验通过')
+            return True
+        else:
+            logger.error('应为整数的列校验未通过', exc_info=True)
+            return False
 
     def check_int(self):
         """
@@ -91,11 +91,10 @@ class CheckData(object):
         :return: bool
         """
         # 检查是否有非整数的值
-        for col in self.columns:
-            if col not in ['姓名', '性别']:
-                if self[col].apply(lambda x: not isinstance(x, int)).any():
-                    logger.info(f'{col}列有非整数的值')
-                    return False
-                else:
-                    logger.info(f'{col}列没有非整数的值')
-                    return True
+        for col in ScoreCol:
+            if self[col].apply(lambda x: isinstance(x, int)).all():
+                logger.info('数据类型正确')
+                return True
+            else:
+                logger.error('数据类型错误', exc_info=True)
+                return False

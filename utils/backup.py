@@ -74,6 +74,7 @@ def store_df(df, info):
     if os.path.exists(path):
         # 删除文件
         os.remove(path)
-    # 将DataFrame存储为csv文件
-    df.to_csv(path, index=False)
+    # 将DataFrame存储为xlsx文件
+    path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'backup', 'backup {}.xlsx'.format(info))
+    df.to_excel(path, index=False)
     logger.info('存储文件成功，文件路径为：{}'.format(path), extra={'info': info})
