@@ -9,7 +9,7 @@
  @IDE     : PyCharm
  @Contact : hhh_htz@outlook.com
  """
-import pandas as pd
+from conf.config import *
 from utils.Exceptions import *
 
 logging.basicConfig(level=logging.INFO, filename='pre-handle.log', filemode='w', format='%(asctime)s - %(name)s - %('
@@ -29,11 +29,13 @@ class CheckData(object):
     def check_null(self):
         """
         检查数据是否有空值
+        :param dataframe: pandas.DataFrame
         :return: bool
         """
-        if self.dataframe.isnull().values.any():
+        # 报错 AttributeError: 'DataFrame' object has no attribute 'dataframe'
+        if self.isnull().values.any():
             logger.error('数据存在空值', exc_info=True)
-            raise DataNullError('数据存在空值')
+            return False
         else:
             logger.info('数据不存在空值')
             return True
@@ -43,21 +45,56 @@ class CheckData(object):
         检查数据是否有重复值
         :return: bool
         """
-        if self.dataframe.duplicated().any():
+        if self.duplicated().any():
             logger.error('数据存在重复值', exc_info=True)
-            raise DataError('数据存在重复值')
+            return False
         else:
             logger.info('数据不存在重复值')
             return True
+
+    # def check_data_type(self):
+    #     """
+    #     检查数据类型
+    #     :return: bool
+    #     """
+    #     if self.dtypes == 'object':
+    #         logger.error('数据类型错误', exc_info=True)
+    #         raise DataError('数据类型错误')
+    #     else:
+    #         logger.info('数据类型正确')
+    #         return True
 
     def check_data_type(self):
         """
         检查数据类型
         :return: bool
         """
-        if self.dataframe.dtypes == 'object':
-            logger.error('数据类型错误', exc_info=True)
-            raise DataError('数据类型错误')
+        # 从StrCol中获取应为字符串类型的列
+        str_col = StrCol
+        if self[str_col].applymap(lambda x: isinstance(x, str)).all().all():
+            logger.info('应为字符串的列校验通过')
         else:
-            logger.info('数据类型正确')
+            # 报错精确到哪一列第几行
+            logger.error('应为字符串的列校验未通过', exc_info=True)
+        # 检查ScoreCol中的列是否为整数类型
+        score_col = ScoreCol
+        if self[score_col].applymap(lambda x: isinstance(x, int)).all().all():
+            logger.info('应为整数的列校验通过')
             return True
+        else:
+            logger.error('应为整数的列校验未通过', exc_info=True)
+            return False
+
+    def check_int(self):
+        """
+        检查数据是否为整数类型
+        :return: bool
+        """
+        # 检查是否有非整数的值
+        for col in ScoreCol:
+            if self[col].apply(lambda x: isinstance(x, int)).all():
+                logger.info('数据类型正确')
+                return True
+            else:
+                logger.error('数据类型错误', exc_info=True)
+                return False

@@ -10,7 +10,7 @@
  @Contact : hhh_htz@outlook.com
  """
 import logging
-
+import utils.backup as bk
 import pandas as pd
 
 from utils.Exceptions import FileTypeUnsupportError
@@ -28,12 +28,16 @@ def read_data(path):
     # 读取文件后缀
     file_type = path.split('.')[-1]
     if file_type == 'csv':
-        backup(path, '初始化备份')
         data = pd.read_csv(path)
         df = pd.DataFrame(data)
+        df1 = df.copy()
+        bk.store_df(df1, '原始文件备份')
     elif file_type == 'xlsx' or file_type == 'xls':
         data = pd.read_excel(path)
         df = pd.DataFrame(data)
+        df1 = df.copy()
+        bk.store_df(df1, '原始文件备份')
     else:
+        print('path:', path)
         raise FileTypeUnsupportError('文件类型不支持')
     return df

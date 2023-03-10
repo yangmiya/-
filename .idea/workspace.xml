@@ -4,15 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ac1aa80-c81a-4019-8435-8be051a89050" name="变更" comment="1">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cansai.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cansai.iml" afterDir="false" />
+    <list default="true" id="5ac1aa80-c81a-4019-8435-8be051a89050" name="变更" comment="解决空值和重复值 待解决：缺勤 作弊">
+      <change afterPath="$PROJECT_DIR$/conf/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gen_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/judge.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/handler.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/stale.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/Exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/Exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup.log" beforeDir="false" afterPath="$PROJECT_DIR$/backup.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/backup 删除重复值前备份.csv" beforeDir="false" afterPath="$PROJECT_DIR$/backup/backup 删除重复值前备份.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/backup 处理后备份.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/backup 替换空值前备份.csv" beforeDir="false" afterPath="$PROJECT_DIR$/backup/backup 替换空值前备份.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fakedata.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stu_score.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/backup.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/backup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/check.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/check.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/pre-handle.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/read_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/read_data.py" afterDir="false" />
     </list>
     <list id="da67a0f0-79fa-4040-9c60-4d63fce9a90e" name="Create stale.yml" comment="1&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,21 +55,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "application.passwordSafe",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;CSV-Groovy.csv.groovy&quot;,
+    &quot;database.data.extractors.current.id&quot;: &quot;CSV-Groovy.csv.groovy&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;application.passwordSafe&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\cansai\conf" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="cansai" />
@@ -91,6 +110,8 @@
       <option name="presentableId" value="Default" />
       <updated>1678428064677</updated>
       <workItem from="1678428066355" duration="422000" />
+      <workItem from="1678459441636" duration="136000" />
+      <workItem from="1678459632316" duration="1462000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1678428099128</created>
@@ -113,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678428867809</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="检查+处理文件完成">
+      <created>1678431505331</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678431505331</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +165,10 @@
     <MESSAGE value="1" />
     <MESSAGE value="Create stale.yml" />
     <MESSAGE value="1&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="1&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;" />
+    <MESSAGE value="检查+处理文件完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="检查+处理文件完成" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/cansai$main.coverage" NAME="main 覆盖结果" MODIFIED="1678451626455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -3,84 +3,55 @@
 
  Copyright (C) 2023 - 2023 Tony Huang All Rights Reserved 
 
- @Time    : 2023/3/10 12:45
+ @Time    : 2023/3/10 22:08
  @Author  : Tony Huang
  @File    : handler.py
  @IDE     : PyCharm
  @Contact : hhh_htz@outlook.com
  """
-# 处理数据中的空值 异常值 以及重复值
+# 导入pandas库
 import pandas as pd
-import numpy as np
 import logging
-from utils.Exceptions import *
-from utils.backup import backup, store_df
+from conf.config import *
 
-logging.basicConfig(level=logging.INFO, filename='pre-handle.log', filemode='w', format='%(asctime)s - %(name)s - %('
-                                                                                        'levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+logging.getLogger().setLevel(logging.INFO)
 
 
-class HandleData(object):
-    """
-    处理数据中的空值 异常值 以及重复值
-    :param object: pandas.DataFrame
-    """
-
-    def __init__(self, dataframe):
+# class DataHandler:
+#     def __init__(self):
+#         self.dataframe = dataframe
+#         self.scorecol = ScoreCol
+#         self.strcol = StrCol
+#
+#     def clean_data(self):
+#         # 去除重复行
+#         self.drop_duplicates(inplace=True)
+#         # 在ScoreCol范围内去除空值，inplace=True表示在原数据上修改，用0填充
+#         self.dropna(subset=self.scoreCol, how='all', inplace=True)
+#         # 用0 替换ScoreCol范围内不为int类型的数据
+#         self[self.ScoreCol] = self.dataframe[self.ScoreCol].fillna(0).astype(int)
+#         # 把StrCol范围内的数据转换为str类型
+#         self[self.StrCol] = self.dataframe[self.StrCol].astype(str)
+class DataHandler:
+    def __init__(self, dataframe, scorecol, strcol):
         self.dataframe = dataframe
+        self.scorecol = scorecol
+        self.strcol = strcol
 
-    def handle_null(self):
-        """
-        处理数据中的空值
-        :return: pandas.DataFrame
-        """
-        if self.dataframe.isnull().values.any():
-            logger.warning('数据存在空值')
-            store_df(self.dataframe, '替换空值前备份')
-            # 空值用0填充
-            self.dataframe = self.dataframe.fillna(0)
-            logger.info('已用0填充空值')
-            return self.dataframe
-        else:
-            logger.info('数据不存在空值')
-            return self.dataframe
+    def clean_data(self):
+        # 去除重复行
+        self.dataframe.drop_duplicates(inplace=True)
+        # 在ScoreCol范围内 把所有空值替换为0
+        self.dataframe[self.scorecol] = self.dataframe[self.scorecol].fillna(0)
 
-    def handle_duplicate(self):
-        """
-        处理数据中的所有值重复的行
-        :return: pandas.DataFrame
-        """
-        if self.dataframe.duplicated().any():
-            store_df(self.dataframe, '删除重复值前备份')
-            logger.warning('第{}行数据存在重复值'.format(self.dataframe.duplicated().any()))
-            # 删除重复的行
-            self.dataframe = self.dataframe.drop_duplicates()
-            logger.info('已删除第{}行数据'.format(self.dataframe.duplicated().any()))
-            return self.dataframe
-        else:
-            logger.info('数据不存在重复值')
-            return self.dataframe
+        # 用0 替换ScoreCol范围内不为int类型的数据
+        def to_int(x):
+            try:
+                return int(x)
+            except ValueError:
+                return 0
 
-    def handle_format(self):
-        """
-        处理数据中的格式异常
-        :return: pandas.DataFrame
-        """
-        store_df(self.dataframe, '格式化异常前备份')
-        # 除['姓名', '性别']外的列应为int类型，查询格式异常的数据，使用0替换
-        for col in self.dataframe.columns:
-            if col not in ['姓名', '性别']:
-                self.dataframe[col] = self.dataframe[col].apply(lambda x: 0 if type(x) != int else x)
-        logger.info('已将格式异常的数据替换为0')
-        return self.dataframe
-
-    def handle_all(self):
-        """
-        处理数据中的所有异常
-        :return: pandas.DataFrame
-        """
-        self.dataframe = self.handle_null()
-        self.dataframe = self.handle_duplicate()
-        self.dataframe = self.handle_format()
+        self.dataframe[self.scorecol] = self.dataframe[self.scorecol].applymap(to_int)
+        # 把StrCol范围内的数据转换为str类型
+        self.dataframe[self.strcol] = self.dataframe[self.strcol].astype(str)
         return self.dataframe
