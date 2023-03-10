@@ -35,5 +35,6 @@ def read_data(path):
         data = pd.read_excel(path)
         df = pd.DataFrame(data)
     else:
+        print('path:', path)
         raise FileTypeUnsupportError('文件类型不支持')
     return df

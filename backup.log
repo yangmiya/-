@@ -1,0 +1,7 @@
+2023-03-10 15:52:57,202 - utils.check - INFO - 数据不存在空值
+2023-03-10 15:52:57,204 - utils.check - INFO - 数据不存在重复值
+2023-03-10 15:52:57,204 - utils.check - INFO - 姓名和性别列为字符串类型
+2023-03-10 15:52:57,204 - utils.check - ERROR - 姓名列不是整数类型
+NoneType: None
+2023-03-10 15:52:57,204 - utils.check - INFO - 学号列没有非整数的值
+2023-03-10 15:52:57,438 - utils.backup - INFO - 存储文件成功，文件路径为：C:\Users\Administrator\Desktop\cansai\backup\backup 处理后备份.csv

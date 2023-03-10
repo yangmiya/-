@@ -35,32 +35,32 @@ class HandleData(object):
         处理数据中的空值
         :return: pandas.DataFrame
         """
-        if self.dataframe.isnull().values.any():
+        if self.isnull().values.any():
             logger.warning('数据存在空值')
-            store_df(self.dataframe, '替换空值前备份')
+            store_df(self, '替换空值前备份')
             # 空值用0填充
-            self.dataframe = self.dataframe.fillna(0)
+            self = self.fillna(0)
             logger.info('已用0填充空值')
-            return self.dataframe
+            return self
         else:
             logger.info('数据不存在空值')
-            return self.dataframe
+            return self
 
     def handle_duplicate(self):
         """
         处理数据中的所有值重复的行
         :return: pandas.DataFrame
         """
-        if self.dataframe.duplicated().any():
-            store_df(self.dataframe, '删除重复值前备份')
-            logger.warning('第{}行数据存在重复值'.format(self.dataframe.duplicated().any()))
+        if self.duplicated().any():
+            store_df(self, '删除重复值前备份')
+            logger.warning('第{}行数据存在重复值'.format(self.duplicated().any()))
             # 删除重复的行
-            self.dataframe = self.dataframe.drop_duplicates()
-            logger.info('已删除第{}行数据'.format(self.dataframe.duplicated().any()))
-            return self.dataframe
+            self = self.drop_duplicates()
+            logger.info('已删除第{}行数据'.format(self.duplicated().any()))
+            return self
         else:
             logger.info('数据不存在重复值')
-            return self.dataframe
+            return self
 
     def handle_format(self):
         """
@@ -84,3 +84,14 @@ class HandleData(object):
         self.dataframe = self.handle_duplicate()
         self.dataframe = self.handle_format()
         return self.dataframe
+
+    def handle_int(self):
+        """
+        处理非int类型的数据
+        :return: pandas.DataFrame
+        """
+        # 把非整数的值转换为0
+        for col in self.columns:
+            if col not in ['姓名', '性别']:
+                self[col] = pd.to_numeric(self[col], errors='coerce').fillna(0).astype(int)
+        logger.info('已把非整数的值转换为0')

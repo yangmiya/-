@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ac1aa80-c81a-4019-8435-8be051a89050" name="变更" comment="1">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cansai.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cansai.iml" afterDir="false" />
+    <list default="true" id="5ac1aa80-c81a-4019-8435-8be051a89050" name="变更" comment="检查+处理文件完成">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/Exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/Exceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/backup.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/backup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stu_score.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/stu_score.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/check.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/check.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/read_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/read_data.py" afterDir="false" />
     </list>
     <list id="da67a0f0-79fa-4040-9c60-4d63fce9a90e" name="Create stale.yml" comment="1&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678428867809</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="检查+处理文件完成">
+      <created>1678431505331</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678431505331</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +143,7 @@
     <MESSAGE value="1" />
     <MESSAGE value="Create stale.yml" />
     <MESSAGE value="1&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="1&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;" />
+    <MESSAGE value="检查+处理文件完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="检查+处理文件完成" />
   </component>
 </project>
