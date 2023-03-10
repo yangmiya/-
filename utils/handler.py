@@ -14,6 +14,7 @@ import pandas as pd
 import numpy as np
 import logging
 from utils.Exceptions import *
+from utils.backup import backup
 
 logging.basicConfig(level=logging.INFO, filename='pre-handle.log', filemode='w', format='%(asctime)s - %(name)s - %('
                                                                                         'levelname)s - %(message)s')
@@ -35,8 +36,10 @@ class HandleData(object):
         """
         if self.dataframe.isnull().values.any():
             logger.warning('数据存在空值')
-            # 用均值填充
-            self.dataframe = self.dataframe.fillna(self.dataframe.mean())
+            backup1 = backup(self.dataframe)
+            # 空值用0填充
+            self.dataframe = self.dataframe.fillna(0)
+            logger.info('已用0填充空值')
             return self.dataframe
         else:
             logger.info('数据不存在空值')
@@ -44,31 +47,26 @@ class HandleData(object):
 
     def handle_duplicate(self):
         """
-        处理数据中的重复值
+        处理数据中的所有值重复的行
         :return: pandas.DataFrame
         """
-        if self.dataframe.duplicated().values.any():
-            logger.warning('数据存在重复值')
+        if self.dataframe.duplicated().any():
+            logger.warning('第{}行数据存在重复值'.format(self.dataframe.duplicated().any()))
+            # 删除重复的行
             self.dataframe = self.dataframe.drop_duplicates()
-            logger.info('已删除重复值')
+            logger.info('已删除第{}行数据'.format(self.dataframe.duplicated().any()))
             return self.dataframe
         else:
             logger.info('数据不存在重复值')
             return self.dataframe
 
-    def handle_outlier(self):
+    def handle_format(self):
         """
-        处理数据中的异常值
+        处理数据中的格式异常
         :return: pandas.DataFrame
         """
-        if self.dataframe.isnull().values.any():
-            logger.warning('数据存在异常值')
-            self.dataframe = self.dataframe.dropna()
-            logger.info('已删除异常值')
-            return self.dataframe
-        else:
-            logger.info('数据不存在异常值')
-            return self.dataframe
+        backup.
+        # 将数据中的异常值替换为NaN
 
     def handle_all(self):
         """
