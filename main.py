@@ -15,7 +15,7 @@ from utils.read_data import read_data
 from tkinter import filedialog
 import tkinter as tk
 from conf.config import *
-
+# 正式环境下 使用tkinter获取文件路径
 # root = tk.Tk()
 # root.withdraw()
 #
