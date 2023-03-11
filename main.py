@@ -9,12 +9,21 @@
  @IDE     : PyCharm
  @Contact : hhh_htz@outlook.com
  """
+import os
+
 from utils.handler import DataHandler
 from utils.backup import store_df
 from utils.read_data import read_data
 from tkinter import filedialog
 import tkinter as tk
 from conf.config import *
+
+# 初始化流程 备份上一次的数据
+if os.path.exists('Proceed.xlsx'):
+    store_df(read_data('Proceed.xlsx'), '上一次处理的数据')
+    os.remove('Proceed.xlsx')
+
+# TODO: 正式环境下使用tkinter获取文件路径 本地测试使用
 # 正式环境下 使用tkinter获取文件路径
 # root = tk.Tk()
 # root.withdraw()

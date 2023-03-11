@@ -1,2 +1,4 @@
-2023-03-10 23:11:39,403 - utils.backup - INFO - 存储文件成功，文件路径为：C:\Users\Administrator\Desktop\cansai\backup\backup 原始文件备份.xlsx
-2023-03-10 23:11:39,448 - utils.backup - INFO - 存储文件成功，文件路径为：C:\Users\Administrator\Desktop\cansai\backup\backup 处理后备份.xlsx
+2023-03-11 11:58:08,924 - utils.backup - INFO - 存储文件成功，文件路径为：C:\Users\Administrator\Desktop\cansai\backup\backup 原始文件备份.xlsx
+2023-03-11 11:58:08,951 - utils.backup - INFO - 存储文件成功，文件路径为：C:\Users\Administrator\Desktop\cansai\backup\backup 上一次处理的数据.xlsx
+2023-03-11 11:58:09,011 - utils.backup - INFO - 存储文件成功，文件路径为：C:\Users\Administrator\Desktop\cansai\backup\backup 原始文件备份.xlsx
+2023-03-11 11:58:09,075 - utils.backup - INFO - 存储文件成功，文件路径为：C:\Users\Administrator\Desktop\cansai\backup\backup 处理后备份.xlsx
