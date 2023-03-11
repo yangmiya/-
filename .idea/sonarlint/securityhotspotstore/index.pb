@@ -5,8 +5,6 @@ C
 utils/check.py,2\b\2b3ee655dbfcfec8c9de21a3fb974879ef9f6c15
 >
 tools/judge.py,8\a\8a0f519ae459cdbe0c6da44829f9c910128a144d
->
-conf/config.py,a\0\a0f861e84fc21c7077592eab973163caec10fd05
 @
 utils/handler.py,5\7\57792d2a5e73fd2832480510a8158dc644276a50
 ;
