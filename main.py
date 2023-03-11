@@ -10,7 +10,7 @@
  @Contact : hhh_htz@outlook.com
  """
 import os
-
+from tools.judge import GradeJudge
 from utils.handler import DataHandler
 from utils.backup import store_df
 from utils.read_data import read_data
@@ -43,6 +43,11 @@ print(dataframe2)
 
 # 备份数据
 store_df(dataframe2, '处理后备份')
+
+# 评分判断
+grade_judge = GradeJudge(dataframe2)
+dataframe = grade_judge.handle_data()
+print(dataframe)
 
 # 保存数据
 dataframe.to_excel(SaveName, index=False)
