@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ac1aa80-c81a-4019-8435-8be051a89050" name="变更" comment="解决空值和重复值 待解决：缺勤 作弊">
-      <change afterPath="$PROJECT_DIR$/conf/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/judge.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/handler.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/stale.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backup.log" beforeDir="false" afterPath="$PROJECT_DIR$/backup.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backup/backup 删除重复值前备份.csv" beforeDir="false" afterPath="$PROJECT_DIR$/backup/backup 删除重复值前备份.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backup/backup 处理后备份.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backup/backup 替换空值前备份.csv" beforeDir="false" afterPath="$PROJECT_DIR$/backup/backup 替换空值前备份.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fakedata.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stu_score.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/backup.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/backup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/check.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/check.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/pre-handle.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/read_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/read_data.py" afterDir="false" />
-    </list>
+    <list default="true" id="5ac1aa80-c81a-4019-8435-8be051a89050" name="变更" comment="解决空值和重复值 待解决：缺勤 作弊&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;" />
     <list id="da67a0f0-79fa-4040-9c60-4d63fce9a90e" name="Create stale.yml" comment="1&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +25,7 @@
       </list>
     </option>
     <option name="SIGN_OFF_COMMIT" value="true" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -111,7 +91,7 @@
       <updated>1678428064677</updated>
       <workItem from="1678428066355" duration="422000" />
       <workItem from="1678459441636" duration="136000" />
-      <workItem from="1678459632316" duration="1462000" />
+      <workItem from="1678459632316" duration="1530000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1678428099128</created>
@@ -141,7 +121,28 @@
       <option name="project" value="LOCAL" />
       <updated>1678431505331</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="解决空值和重复值 待解决：缺勤 作弊&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;">
+      <created>1678461119748</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1678461119748</updated>
+    </task>
+    <task id="LOCAL-00006" summary="解决空值和重复值 待解决：缺勤 作弊&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;">
+      <created>1678461134676</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678461134676</updated>
+    </task>
+    <task id="LOCAL-00007" summary="解决空值和重复值 待解决：缺勤 作弊&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;">
+      <created>1678461158199</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1678461158199</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,7 +167,9 @@
     <MESSAGE value="Create stale.yml" />
     <MESSAGE value="1&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;" />
     <MESSAGE value="检查+处理文件完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="检查+处理文件完成" />
+    <MESSAGE value="解决空值和重复值 待解决：缺勤 作弊" />
+    <MESSAGE value="解决空值和重复值 待解决：缺勤 作弊&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="解决空值和重复值 待解决：缺勤 作弊&#10;&#10;Signed-off-by: htz &lt;TonyHuang0711@users.noreply.github.com&gt;" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cansai$main.coverage" NAME="main 覆盖结果" MODIFIED="1678451626455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
